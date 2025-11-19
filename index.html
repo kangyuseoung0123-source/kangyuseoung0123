@@ -286,6 +286,117 @@
             <a href="#">Email</a>
         </p>
     </footer>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크리스마스의 속삭임 | Christmas Whisper</title>
+    <style>
+        /* (여기에 index.html의 <style> 태그 내용을 모두 복사 붙여넣기) */
+        /* 또는 별도 파일로 분리하여 <link rel="stylesheet" href="style.css"> 사용 */
 
+        /* === 크리스마스 테마를 위한 추가 스타일 === */
+        .christmas-hero {
+            /* 배경 이미지 변경: 크리스마스 테마의 겨울 풍경 */
+            background: url('https://picsum.photos/1600/900?random=5') no-repeat center center/cover;
+            height: 80vh; /* index보다 약간 짧게 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); /* 조금 더 어두운 오버레이 */
+        }
+        
+        .christmas-hero-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 3.5em;
+            margin: 0;
+            color: #ffdddd; /* 따뜻한 붉은색 톤으로 변경 */
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .section-christmas {
+            background-color: #fcfcfc;
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .gift-card-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gift-card {
+            width: 30%;
+            padding: 30px;
+            background-color: #f0f8ff; /* 연한 하늘색 배경 */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gift-card h3 {
+            color: #c0392b; /* 크리스마스 레드 */
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        
+        .gift-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #27ae60; /* 크리스마스 그린 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">설화(雪話)</a> <nav>
+            <a href="index.html#about">About</a>
+            <a href="index.html#posts">Posts</a>
+            <a href="#">🎁 Christmas Story</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="christmas-hero">
+        <h1 class="christmas-hero-title">Merry Christmas!</h1>
+        <p class="hero-subtitle">"가장 따뜻한 계절, 마음속의 기적을 나누다."</p>
+    </section>
+
+    <section class="section-christmas">
+        <h2>우리의 크리스마스 영감</h2>
+        <div class="gift-card-container">
+            <div class="gift-card">
+                <div class="gift-icon">🔥</div>
+                <h3>따뜻한 벽난로</h3>
+                <p>차고 긴 밤을 포근하게 감싸는 벽난로처럼, 따뜻한 마음을 나누는 시간.</p>
+            </div>
+            <div class="gift-card">
+                <div class="gift-icon">🎁</div>
+                <h3>나눔의 기쁨</h3>
+                <p>가장 소중한 사람에게 작은 선물을 건네는 순간, 진정한 행복을 발견합니다.</p>
+            </div>
+            <div class="gift-card">
+                <div class="gift-icon">🕰️</div>
+                <h3>영원한 추억</h3>
+                <p>소중한 사람들과 함께 보낸 이 아름다운 순간을 영원히 기록합니다.</p>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; color: #666;">
+            **더 많은 크리스마스 이야기를 보려면 아래를 클릭하세요.**
+        </p>
+        <a href="#" class="cta-button" style="border-color: #c0392b; color: #c0392b;">크리스마스 갤러리 보기</a>
+    </section>
+
+    <footer>
+        </footer>
+
+</body>
+</html>
 </body>
 </html>
