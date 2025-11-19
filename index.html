@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고요한 겨울의 기록 | Silent Winter</title>
+    <style>
+        /* 폰트 임포트 (구글 폰트: Serifs 계열의 감성적인 'Nanum Myeongjo'와 가독성 좋은 'Noto Sans KR') */
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+        /* === 기본 스타일 === */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+        }
+
+        /* === 애니메이션 (눈송이) === */
+        @keyframes snowfall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: snowfall linear infinite;
+            z-index: 1000;
+        }
+
+        /* 눈송이 크기, 속도, 위치 다양화 */
+        .snowflake:nth-child(even) {
+            width: 5px; height: 5px;
+            animation-duration: 15s;
+            animation-delay: -5s;
+            left: 20%;
+        }
+
+        .snowflake:nth-child(3n) {
+            width: 8px; height: 8px;
+            animation-duration: 18s;
+            animation-delay: -8s;
+            left: 40%;
+        }
+
+        .snowflake:nth-child(5n) {
+            width: 4px; height: 4px;
+            animation-duration: 12s;
+            animation-delay: -2s;
+            left: 70%;
+        }
+
+
+        /* === 헤더 & 네비게이션 === */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1); /* 반투명 배경 */
+            backdrop-filter: blur(5px); /* 블러 효과로 감성 더하기 */
+            z-index: 999;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.8em;
+            color: white; /* 흰색 로고 */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+
+        nav a {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d1e2ff; /* 마우스 오버 시 연한 색상 */
+        }
+
+        /* === 메인 히어로 섹션 === */
+        .hero {
+            background: url('https://picsum.photos/1600/900?random=1') no-repeat center center/cover;
+            /* 배경 이미지 URL을 실제 아름다운 겨울 풍경 이미지로 교체하세요! */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            /* 배경 이미지 위에 약간 어두운 오버레이 추가 */
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 4em;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 300;
+            font-size: 1.5em;
+            margin-top: 15px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-button {
+            margin-top: 40px;
+            padding: 12px 30px;
+            background: transparent;
+            color: white;
+            border: 1px solid white; /* 테두리만 있는 미니멀 디자인 */
+            text-decoration: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        .cta-button:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 호버 시 은은한 배경 변화 */
+        }
+
+        /* === 콘텐츠 섹션 === */
+        .content-section {
+            padding: 80px 50px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 2.5em;
+            color: #555;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: '❄️'; /* 감성적인 구분선 */
+            display: block;
+            margin: 10px auto 0;
+            color: #aebfd4;
+            font-size: 0.8em;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .card {
+            width: 300px;
+            background-color: #f7f9fc; /* 옅은 파스텔톤 배경 */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* 살짝 떠오르는 효과 */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.4em;
+            color: #444;
+            margin-top: 0;
+        }
+
+        .card-text {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* === 푸터 === */
+        footer {
+            background-color: #3f516d; /* 차분한 겨울밤 색상 */
+            color: #e6e6e6;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.85em;
+        }
+
+        footer a {
+            color: #aebfd4;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="snowflake" style="left: 10%; animation-duration: 20s;"></div>
+    <div class="snowflake" style="left: 30%; animation-duration: 14s; animation-delay: -3s;"></div>
+    <div class="snowflake" style="left: 50%; animation-duration: 25s; animation-delay: -10s;"></div>
+    <div class="snowflake" style="left: 65%; animation-duration: 17s; animation-delay: -6s;"></div>
+    <div class="snowflake" style="left: 90%; animation-duration: 22s; animation-delay: -4s;"></div>
+    <header>
+        <a href="#" class="logo">설화(雪話)</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#posts">Posts</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="hero-title">고요한 계절의 이야기</h1>
+        <p class="hero-subtitle">"시간이 멈춘 듯한 고요함 속에서, 영감과 기억을 담다."</p>
+        <a href="#posts" class="cta-button">이야기 시작하기</a>
+    </section>
+
+    <section id="posts" class="content-section">
+        <h2>겨울의 기록</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="https://picsum.photos/300/200?random=2" alt="첫 번째 기록" class="card-image">
+                <div class="card-body">
+                    <h3 class="card-title">첫눈 내린 날의 감상</h3>
+                    <p class="card-text">창밖을 보니 하얀 눈이 소리 없이 내려앉았습니다. 이 고요함 속에서 새로운 시작을 다짐합니다.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/300/200?random=3" alt="두 번째 기록" class="card-image">
+                <div class="card-body">
+                    <h3 class="card-title">따뜻한 차 한 잔의 위로</h3>
+                    <p class="card-text">차가운 계절, 손을 녹여주는 따뜻한 차처럼, 나만의 작은 행복을 코딩 속에 담아봅니다.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/300/200?random=4" alt="세 번째 기록" class="card-image">
+                <div class="card-body">
+                    <h3 class="card-title">겨울 숲을 거닐다</h3>
+                    <p class="card-text">고요한 숲길을 걷는 순간, 복잡했던 머릿속이 맑아집니다. 다음 프로젝트의 아이디어를 얻었습니다.</p>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 Silent Winter. All Rights Reserved.</p>
+        <p>
+            <a href="#">Privacy</a> |
+            <a href="#">Social Media</a> |
+            <a href="#">Email</a>
+        </p>
+    </footer>
+
+</body>
+</html>
